@@ -1,4 +1,4 @@
-export function formatDate(dateString) {
+ function formatDate(dateString) {
     // Parse the date string into a Date object
     const date = new Date(dateString);
   
@@ -14,7 +14,7 @@ export function formatDate(dateString) {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   }
 
-export function getCurrentFormattedTime() {
+ function getCurrentFormattedTime() {
   const now = new Date();
 
   // Get individual components
@@ -28,7 +28,7 @@ export function getCurrentFormattedTime() {
   // Combine into the desired format
   return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
 }
-export function calculateTimeDifferenceInHours(startTime, endTime) {
+ function calculateTimeDifferenceInHours(startTime, endTime) {
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
 
@@ -45,7 +45,7 @@ export function calculateTimeDifferenceInHours(startTime, endTime) {
   return { hours, minutes };
 }
 
-export function calculatingTheNoPriority(arr){
+ function calculatingTheNoPriority(arr){
   var totalPriorityOne = 0;
   var totalPriorityTwo = 0;
   var totalPriorityThree = 0;
@@ -74,7 +74,7 @@ export function calculatingTheNoPriority(arr){
   
 }
 
-export function totalTaskCount(arr){
+ function totalTaskCount(arr){
 
   var totalTask = 0;
   var totalPendingTask = 0;
@@ -97,3 +97,4 @@ export function totalTaskCount(arr){
   return {totalTask , totalPendingTask , totalFinishedTask};
 
 }
+module.exports = { formatDate ,getCurrentFormattedTime ,totalTaskCount, calculatingTheNoPriority , calculateTimeDifferenceInHours };
