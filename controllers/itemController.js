@@ -50,7 +50,7 @@ exports.getItemById = async (req, res, db) => {
     console.log('id',id);
     
     try {
-        const [rows] = await db.execute('SELECT * FROM tasks WHERE id = ?', [id]);
+        const [rows] = await db.execute('SELECT * FROM tasks WHERE task_id = ?', [id]);
         if (rows.length === 0) return res.status(404).json({ error: 'Item not found' });
         res.json(rows[0]);
     } catch (err) {
@@ -64,7 +64,7 @@ exports.updateItem = async (req, res, db) => {
     const { title, start_time, end_time, priority, task_status } = req.body;
     try {
         const [result] = await db.execute(
-            'UPDATE tasks SET title = ?, start_time = ?, end_time = ?, priority = ?, task_status = ? WHERE id = ?',
+            'UPDATE tasks SET title = ?, start_time = ?, end_time = ?, priority = ?, task_status = ? WHERE task_id = ?',
             [title, start_time, end_time, priority, task_status, id]
         );
         if (result.affectedRows === 0) return res.status(404).json({ error: 'Item not found' });
@@ -77,7 +77,7 @@ exports.updateItem = async (req, res, db) => {
 exports.deleteItem = async (req, res, db) => {
     const { id } = req.params;
     try {
-        const [result] = await db.execute('DELETE FROM tasks WHERE id = ?', [id]);
+        const [result] = await db.execute('DELETE FROM tasks WHERE task_id = ?', [id]);
         if (result.affectedRows === 0) return res.status(404).json({ error: 'Item not found' });
         res.json({ message: 'Item deleted successfully' });
     } catch (err) {
