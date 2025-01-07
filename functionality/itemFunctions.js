@@ -86,7 +86,7 @@
     else{
       totalFinishedTask +=1;
     }
-    if (arr[index].id) {
+    if (arr[index].task_id) {
       totalTask +=1
     }
     
