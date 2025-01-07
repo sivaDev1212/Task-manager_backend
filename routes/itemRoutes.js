@@ -10,12 +10,12 @@ const verifyToken = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.post('/items', async (req, res) => {
+router.post('/items',verifyToken, async (req, res) => {
     const db = req.app.locals.db;
     await createItem(req, res, db);
 });
 
-router.get('/items', async (req, res) => {
+router.get('/items',verifyToken, async (req, res) => {
     
     const db = req.app.locals.db;
     await getItems(req, res, db);
