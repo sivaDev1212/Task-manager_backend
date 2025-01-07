@@ -83,7 +83,7 @@
     if (arr[index].task_status == "pending") {
       totalPendingTask +=1;
     }
-    else{
+    else if(arr[index].task_status == "Finished"){
       totalFinishedTask +=1;
     }
     if (arr[index].task_id) {
